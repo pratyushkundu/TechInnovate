@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import TestApp from "./test-app";
+import App from "./App";
 import "./index.css";
 
 // Add error handling to catch any React rendering issues
@@ -9,7 +9,7 @@ if (!rootElement) {
 }
 
 try {
-  createRoot(rootElement).render(<TestApp />);
+  createRoot(rootElement).render(<App />);
 } catch (error) {
   console.error("Failed to render React app:", error);
   rootElement.innerHTML = `
