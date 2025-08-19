@@ -1,4 +1,6 @@
 import OpenAI from "openai";
+import 'dotenv/config';  // shorthand way
+
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 const openai = new OpenAI({ 
@@ -14,7 +16,7 @@ export async function generateChatResponse(messages: ChatMessage[]): Promise<str
   try {
     const systemMessage: ChatMessage = {
       role: 'system',
-      content: `You are an AI assistant for TechFlow Solutions, a premier IT & technology services company. 
+      content: `You are an AI assistant for Hukitola Solutions, a premier IT & technology services company. 
       You help potential clients learn about our services including:
       - Web Development (React, Next.js, Node.js)
       - Cloud Solutions (AWS, Azure, GCP)
@@ -51,11 +53,11 @@ export async function generateProjectSuggestions(projectDescription: string): Pr
 }> {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: 'system',
-          content: `You are a technical consultant for TechFlow Solutions. Based on a project description, provide:
+          content: `You are a technical consultant for Hukitola Solutions. Based on a project description, provide:
           1. 3-5 specific technical suggestions or features
           2. An estimated budget range (Starter: $2,999-$9,999, Professional: $10,000-$49,999, Enterprise: $50,000+)
           3. An estimated timeline in weeks

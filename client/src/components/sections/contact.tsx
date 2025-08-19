@@ -76,21 +76,21 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+91 9078064335",
       bgColor: "bg-tech-purple/20",
       iconColor: "text-tech-purple"
     },
     {
       icon: Mail,
       title: "Email",
-      value: "hello@techflowsolutions.com",
+      value: "info@hukitola.com",
       bgColor: "bg-tech-blue/20",
       iconColor: "text-tech-blue"
     },
     {
       icon: MapPin,
       title: "Office",
-      value: "123 Tech Street, Innovation District, CA 94105",
+      value: "Bhubaneswar,Odisha",
       bgColor: "bg-tech-cyan/20",
       iconColor: "text-tech-cyan"
     }

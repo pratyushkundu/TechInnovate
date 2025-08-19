@@ -51,7 +51,7 @@ export default function Footer() {
                 <Code className="text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-tech bg-clip-text text-transparent">
-                TechFlow
+                Hukitola
               </span>
             </div>
             <p className="text-slate-400 dark:text-slate-400" data-testid="footer-description">
@@ -97,10 +97,10 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-slate-700/50 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 dark:text-slate-400" data-testid="footer-copyright">
-            © 2024 TechFlow Solutions. All rights reserved.
+            © 2024 Hukitola Solutions. All rights reserved.
           </p>
           <p className="text-slate-400 dark:text-slate-400 text-sm mt-4 md:mt-0" data-testid="footer-tagline">
-            Designed and developed with <span className="text-red-500">♥</span> for the future of technology
+            Designed and developed with <span className="text-red-500">Hukitola Solutions</span> for the future of technology
           </p>
         </div>
       </div>

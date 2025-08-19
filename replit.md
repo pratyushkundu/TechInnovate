@@ -2,7 +2,7 @@
 
 ## Overview
 
-TechFlow Solutions is a modern IT services and technology consulting platform built as a full-stack web application. The project showcases a comprehensive digital presence for a technology company, featuring service offerings, project portfolios, client testimonials, pricing information, and an AI-powered chatbot for customer engagement. The application serves as both a marketing website and a lead generation platform with integrated contact management.
+Hukitola Solutions is a modern IT services and technology consulting platform built as a full-stack web application. The project showcases a comprehensive digital presence for a technology company, featuring service offerings, project portfolios, client testimonials, pricing information, and an AI-powered chatbot for customer engagement. The application serves as both a marketing website and a lead generation platform with integrated contact management.
 
 ## User Preferences
 

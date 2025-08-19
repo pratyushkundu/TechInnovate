@@ -53,7 +53,7 @@ export default function Navigation() {
               <Code className="text-white text-lg" />
             </div>
             <span className="text-2xl font-bold bg-gradient-tech bg-clip-text text-transparent">
-              TechFlow
+  Hukitola
             </span>
           </Link>
 
@@ -76,11 +76,12 @@ export default function Navigation() {
               className="p-2 rounded-lg hover:bg-slate-700/50 transition-colors duration-300"
               data-testid="theme-toggle"
             >
-              {theme === "light" ? (
+              {/* {theme === "light" ? (
                 <Moon className="h-5 w-5" />
               ) : (
                 <Sun className="h-5 w-5" />
-              )}
+              )} */}
+               {/* <Moon className="h-5 w-5" /> */}
             </Button>
             <Button 
               className="bg-gradient-tech hover:scale-105 transition-transform duration-300 font-medium"

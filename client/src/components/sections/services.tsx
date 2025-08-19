@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Code, Cloud, Bot, Smartphone, Shield, Headphones, Check } from "lucide-react";
+import { Code, Cloud, Bot, Smartphone, Shield, Headphones, Check, Database, LayoutDashboard } from "lucide-react";
 
 export default function Services() {
   const services = [
@@ -11,38 +11,39 @@ export default function Services() {
       borderColor: "hover:border-tech-purple/50",
       features: ["Responsive Design", "SEO Optimization", "Performance Tuning"]
     },
-    {
-      icon: Cloud,
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure on AWS, Azure, and GCP with automated deployment and monitoring.",
-      gradient: "from-tech-cyan to-tech-blue",
-      borderColor: "hover:border-tech-cyan/50",
-      features: ["Auto-scaling", "24/7 Monitoring", "Disaster Recovery"]
-    },
-    {
-      icon: Bot,
-      title: "AI Integration",
-      description: "Intelligent automation and AI-powered features to streamline operations and enhance user experience.",
-      gradient: "from-tech-green to-tech-cyan",
-      borderColor: "hover:border-tech-green/50",
-      features: ["Chatbot Development", "Process Automation", "Data Analytics"]
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Development",
-      description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
-      gradient: "from-tech-purple to-tech-blue",
-      borderColor: "hover:border-tech-purple/50",
-      features: ["Native iOS/Android", "React Native", "App Store Optimization"]
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Comprehensive security audits, penetration testing, and implementation of robust security measures.",
-      gradient: "from-tech-cyan to-tech-green",
-      borderColor: "hover:border-tech-cyan/50",
-      features: ["Security Audits", "Threat Detection", "Compliance"]
-    },
+   {
+  icon: Database,
+  title: "Blockchain & Smart Contract Services",
+  description: "Secure, transparent, and scalable blockchain solutions with custom smart contract development.",
+  gradient: "from-tech-cyan to-tech-blue",
+  borderColor: "hover:border-tech-cyan/50",
+  features: ["Smart Contract Development", "DeFi Solutions", "Tokenization & NFTs"]
+},
+{
+  icon: Bot,
+  title: "AI Integration",
+  description: "Intelligent automation and AI-powered features to streamline operations and enhance user experience.",
+  gradient: "from-tech-green to-tech-cyan",
+  borderColor: "hover:border-tech-green/50",
+  features: ["Chatbot Development", "Process Automation", "Data Analytics"]
+},
+{
+  icon: Smartphone,
+  title: "Mobile Development",
+  description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
+  gradient: "from-tech-purple to-tech-blue",
+  borderColor: "hover:border-tech-purple/50",
+  features: ["Native iOS/Android", "React Native", "App Store Optimization"]
+},
+{
+  icon: LayoutDashboard,
+  title: "CRM & Website Development",
+  description: "Custom CRM systems and dynamic websites to optimize business processes and digital presence.",
+  gradient: "from-tech-green to-tech-purple",
+  borderColor: "hover:border-tech-green/50",
+  features: ["Custom CRM", "Business Websites", "E-commerce Platforms"]
+}
+,
     {
       icon: Headphones,
       title: "24/7 Support",

@@ -36,7 +36,7 @@ export default function Chatbot() {
       const welcomeMessage: ChatMessage = {
         id: 'welcome',
         role: 'assistant',
-        content: "Hello! 👋 I'm your AI assistant from TechFlow Solutions. How can I help you today? I can answer questions about our services, pricing, or help you get started with your project.",
+        content: "Hello! 👋 I'm your AI assistant from Hukitola Solutions. How can I help you today? I can answer questions about our services, pricing, or help you get started with your project.",
         timestamp: new Date().toISOString(),
       };
       setMessages([welcomeMessage]);

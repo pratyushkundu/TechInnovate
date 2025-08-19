@@ -12,7 +12,7 @@ export default function TestApp() {
       fontFamily: 'Arial, sans-serif'
     }}>
       <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
-        TechFlow Solutions
+        Hukitola Solutions
       </h1>
       <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
         React App is Working! 🎉
