@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertContactSchema, type ChatMessage } from "@shared/schema";
 import { generateChatResponse, generateProjectSuggestions } from "./services/openai";
 import { randomUUID } from "crypto";
+import { sendContactNotification } from "./services/email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
@@ -15,9 +16,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Generate AI suggestions for the project
       const suggestions = await generateProjectSuggestions(validatedData.description);
       
+       const emailSent = await sendContactNotification(contact);
+
       res.json({ 
         success: true, 
         contact,
+        emailSent,
         suggestions 
       });
     } catch (error) {

@@ -96,6 +96,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    scrollbar-width: none;
+    scroll-behavior: smooth;
   }
 }
 
@@ -165,4 +167,15 @@
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+
+/* Hide vertical scrollbar but allow scrolling */
+body,html {
+  overflow-y: scroll;       /* Enable vertical scrolling */
+  scrollbar-width: none;    /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;            /* For Chrome, Safari, and Edge */
 }

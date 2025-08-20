@@ -6,18 +6,18 @@ export default function Footer() {
       title: "Services",
       links: [
         "Web Development",
-        "Mobile Apps", 
+        "Mobile Apps",
         "Cloud Solutions",
         "AI Integration",
         "Cybersecurity"
       ]
     },
     {
-      title: "Company", 
+      title: "Company",
       links: [
         "About Us",
         "Careers",
-        "Blog", 
+        "Blog",
         "Press",
         "Partners"
       ]
@@ -28,18 +28,22 @@ export default function Footer() {
         "Help Center",
         "Documentation",
         "Status",
-        "Privacy Policy", 
+        "Privacy Policy",
         "Terms of Service"
       ]
     }
   ];
 
+  // const socialLinks = [
+  //   { icon: Linkedin, href: "#", color: "hover:text-tech-purple" },
+  //   { icon: Twitter, href: "#", color: "hover:text-tech-blue" },
+  //   { icon: Github, href: "#", color: "hover:text-tech-green" }
+  // ];
   const socialLinks = [
-    { icon: Linkedin, href: "#", color: "hover:text-tech-purple" },
-    { icon: Twitter, href: "#", color: "hover:text-tech-blue" },
-    { icon: Github, href: "#", color: "hover:text-tech-green" }
-  ];
-
+    { icon: Linkedin, href: "https://www.linkedin.com/company/hukitola09/?viewAsMember=true", bgColor: "bg-tech-purple/20", hoverColor: "hover:bg-tech-purple/40", iconColor: "text-tech-purple" },
+    { icon: Twitter, href: "#", bgColor: "bg-tech-blue/20", hoverColor: "hover:bg-tech-blue/40", iconColor: "text-tech-blue" },
+    { icon: Github, href: "https://github.com/pratyushkundu", bgColor: "bg-tech-green/20", hoverColor: "hover:bg-tech-green/40", iconColor: "text-tech-green" }
+  ]
   return (
     <footer className="bg-tech-dark dark:bg-tech-dark border-t border-slate-700/50 py-16" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +66,8 @@ export default function Footer() {
                 <a
                   key={index}
                   href={social.href}
-                  className={`text-slate-400 dark:text-slate-400 ${social.color} transition-colors duration-300`}
+                  target="_blank"
+                  className={`text-slate-400 dark:text-slate-400 ${social.iconColor} transition-colors duration-300`}
                   data-testid={`footer-social-${index}`}
                 >
                   <social.icon className="w-6 h-6" />
@@ -80,8 +85,8 @@ export default function Footer() {
               <ul className="space-y-2 text-slate-400 dark:text-slate-400">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="hover:text-white dark:hover:text-white transition-colors duration-300"
                       data-testid={`footer-link-${sectionIndex}-${linkIndex}`}
                     >

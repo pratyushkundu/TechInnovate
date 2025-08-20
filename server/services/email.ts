@@ -14,7 +14,7 @@ export async function sendContactNotification(contact: Contact): Promise<boolean
   try {
     const msg = {
       to: 'hukitola.dev@gmail.com', // Replace with your admin email
-      from: 'pratyushkundu123@gmail.com', // Replace with your verified sender email
+      from: 'em1381@hukitola.com', // Replace with your verified sender email
       subject: `New Contact Form Submission - ${contact.projectType}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -42,7 +42,7 @@ export async function sendContactNotification(contact: Contact): Promise<boolean
 
           <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #e6f3ff; border-radius: 8px;">
             <p style="margin: 0; color: #0066cc;">
-              <strong>TechFlow Solutions</strong><br>
+              <strong>Hukitola Solutions</strong><br>
               Professional IT Services & Technology Consulting
             </p>
           </div>
