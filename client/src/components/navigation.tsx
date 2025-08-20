@@ -101,11 +101,11 @@ export default function Navigation() {
               className="p-2 rounded-lg hover:bg-slate-700/50"
               data-testid="mobile-theme-toggle"
             >
-              {theme === "light" ? (
+              {/* {theme === "light" ? (
                 <Moon className="h-5 w-5" />
               ) : (
                 <Sun className="h-5 w-5" />
-              )}
+              )} */}
             </Button>
             <Button
               variant="ghost"
