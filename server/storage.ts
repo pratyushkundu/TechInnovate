@@ -197,8 +197,8 @@
 
 // storage.]ts
 import { db } from "./db";
-import { users, contacts, chatSessions } from "@shared/schema";
-import { type User, type InsertUser, type Contact, type InsertContact, type ChatSession, type InsertChatSession, type ChatMessage } from "@shared/schema";
+import { users, contacts, chatSessions, developers } from "@shared/schema";
+import { type User, type InsertUser, type Contact, type InsertContact, type ChatSession, type InsertChatSession, type ChatMessage, type Developer,type InsertDeveloper } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import "dotenv/config";  // automatically loads .env
 
@@ -225,6 +225,16 @@ export class PostgresStorage {
 
   async getContacts(): Promise<Contact[]> {
     return await db.select().from(contacts);
+  }
+
+
+    async createDeveloperContact(insertdeveloper: InsertDeveloper): Promise<Developer> {
+    const result = await db.insert(developers).values(insertdeveloper).returning();
+    return result[0];
+  }
+
+  async getDevelopers(): Promise<Developer[]> {
+    return await db.select().from(developers);
   }
 
   async getChatSession(sessionId: string): Promise<ChatSession | undefined> {

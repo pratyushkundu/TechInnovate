@@ -33,8 +33,8 @@ async function printContacts() {
 async function printContacts1() {
   const client = await pool.connect();
   try {
-    const res = await client.query('SELECT * FROM users');
-    console.log('Users:', res.rows);
+    const res = await client.query('SELECT * FROM developers');
+    console.log('Developers:', res.rows);
   } catch (err) {
     console.error('Error fetching contacts:', err);
   } finally {

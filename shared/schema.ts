@@ -85,6 +85,24 @@ export const contacts = pgTable("contacts", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const developers = pgTable("developers", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phoneNo: text("phone_no").notNull(),
+  projectApplicationFor: text("project_application_for").notNull(),
+  experience: text("experience").notNull(),
+  expertise: text("expertise").notNull(),
+  // resume: text("resume").notNull(), // tus upload url
+   resume: text("resume").notNull(),
+  proposalDescription: text("proposal_description").notNull(),
+  biddingBudget: text("bidding_budget"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+
+
 export const chatSessions = pgTable("chat_sessions", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   sessionId: text("session_id").notNull(),
@@ -108,12 +126,19 @@ export const insertChatSessionSchema = createInsertSchema(chatSessions).omit({
   createdAt: true,
   updatedAt: true,
 });
+export const insertDeveloperSchema = createInsertSchema(developers).omit({
+  id: true,
+  createdAt: true,
+});
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type Contact = typeof contacts.$inferSelect;
+
+export type InsertDeveloper = z.infer<typeof insertDeveloperSchema>;
+export type Developer = typeof developers.$inferSelect;
 
 export type InsertChatSession = z.infer<typeof insertChatSessionSchema>;
 export type ChatSession = typeof chatSessions.$inferSelect;

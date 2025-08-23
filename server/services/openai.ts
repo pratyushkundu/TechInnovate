@@ -33,7 +33,7 @@ export async function generateChatResponse(messages: ChatMessage[]): Promise<str
     };
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages: [systemMessage, ...messages],
       max_tokens: 500,
       temperature: 0.7,
