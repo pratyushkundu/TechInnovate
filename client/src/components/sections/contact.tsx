@@ -946,7 +946,7 @@ export default function Contact() {
         payload = clientFormData;
         response = await apiRequest("POST", "/api/contact/client", payload);
       } else {
-        const { firstName, lastName, email, phoneNo, experience, expertise, proposalDescription, resume,projectApplicationFor } = developerFormData;
+        const { firstName, lastName, email, phoneNo, experience, expertise, proposalDescription, resume,projectApplicationFor,biddingBudget } = developerFormData;
         if (!firstName || !lastName || !email || !phoneNo || !experience || !expertise || !proposalDescription || !resume || !projectApplicationFor) {
           toast({ title: "Error", description: "Please fill in all developer fields.", variant: "destructive" });
           setIsSubmitting(false);

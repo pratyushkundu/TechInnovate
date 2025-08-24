@@ -61,8 +61,8 @@ export async function sendContactNotification(contact: Contact): Promise<boolean
 }
 
 export async function sendDeveloperNotification(developer: Developer): Promise<boolean> {
-
-    const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 5000}`;
+// process.env.BASE_URL || 
+    const baseUrl = `http://localhost:${process.env.PORT || 5000}`;
     const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
     if (!process.env.SENDGRID_API_KEY) {
         console.warn("SENDGRID_API_KEY not configured, skipping email notification");

@@ -1,13 +1,23 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-
+import { fileURLToPath } from "url";
+import path from "path";
 import "dotenv/config";  // automatically loads .env
 
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+// 👇 Serve uploads folder as static files
+// app.use("/uploads", express.static(path.join(__dirname, "middleware/uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "middleware", "uploads")));
+
 
 app.use((req, res, next) => {
   const start = Date.now();
