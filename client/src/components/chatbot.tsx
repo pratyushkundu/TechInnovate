@@ -164,8 +164,8 @@ export default function Chatbot() {
                 )}
                 <div
                   className={`p-3 rounded-xl max-w-xs ${message.role === 'assistant'
-                      ? 'bg-muted'
-                      : 'bg-tech-blue text-white ml-auto'
+                    ? 'bg-muted'
+                    : 'bg-tech-blue text-white ml-auto'
                     }`}
                   data-testid={`message-${message.role}`}
                 >
