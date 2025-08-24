@@ -1,0 +1,28 @@
+<Card 
+  className={`
+    fixed bottom-4 right-4    /* always inside screen */
+    w-[90vw] max-w-xs         /* 90% of viewport width, max 20rem */
+    h-[60vh] max-h-[500px]    /* 60% of viewport height, max 500px */
+    bg-card/95 backdrop-blur-md border border-border shadow-2xl
+    transform transition-all duration-300
+    ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+  `}
+  data-testid="chatbot-interface"
+>
+
+
+
+<----------okay one 
+<Card 
+  className={`
+    fixed bottom-20 right-4         /* move card up from toggle button */
+    w-[90vw] max-w-md       /* mobile: 90% of viewport width, max 28rem */
+    h-[60vh] max-h-[500px]  /* mobile: 60% of viewport height, max 500px */
+    md:w-96 md:h-[500px]    /* desktop: fixed width 24rem, height 500px */
+    bg-card/95 backdrop-blur-md border border-border shadow-2xl
+    transform transition-all duration-300
+    ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+    flex flex-col
+  `}
+  data-testid="chatbot-interface"
+>

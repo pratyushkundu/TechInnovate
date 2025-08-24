@@ -125,7 +125,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-slate-700/50" data-testid="mobile-menu">
+          <div className="md:hidden pb-4 border-t border-slate-700/50 backdrop-blur-md" data-testid="mobile-menu">
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
                 <button

@@ -113,13 +113,21 @@ export default function Chatbot() {
 
       {/* Chatbot Interface */}
       {isOpen && (
-        <Card 
-          className={`absolute bottom-20 right-0 w-96 h-[500px] bg-card/95 backdrop-blur-md border border-border shadow-2xl transform transition-all duration-300 ${
-            isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-          }`}
-          data-testid="chatbot-interface"
-        >
-          {/* Header */}
+      <Card 
+  className={`
+    fixed bottom-28 right-4         /* move card up from toggle button */
+    w-[90vw] max-w-md       /* mobile: 90% of viewport width, max 28rem */
+    h-[60vh] max-h-[500px]  /* mobile: 60% of viewport height, max 500px */
+    md:w-96 md:h-[500px]    /* desktop: fixed width 24rem, height 500px */
+    bg-card/95 backdrop-blur-md border border-border shadow-2xl
+    transform transition-all duration-300
+    ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+    flex flex-col
+  `}
+  data-testid="chatbot-interface"
+>
+
+{/* Header */}
           <div className="p-4 border-b border-border flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-tech rounded-full flex items-center justify-center">
