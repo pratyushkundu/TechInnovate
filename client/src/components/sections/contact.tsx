@@ -913,7 +913,7 @@ export default function Contact() {
     resume: null as File | null,
     proposalDescription: "",
     biddingBudget: "",
-    projectApplicationFor:""
+    projectApplicationFor: ""
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -946,7 +946,7 @@ export default function Contact() {
         payload = clientFormData;
         response = await apiRequest("POST", "/api/contact/client", payload);
       } else {
-        const { firstName, lastName, email, phoneNo, experience, expertise, proposalDescription, resume,projectApplicationFor,biddingBudget } = developerFormData;
+        const { firstName, lastName, email, phoneNo, experience, expertise, proposalDescription, resume, projectApplicationFor, biddingBudget } = developerFormData;
         if (!firstName || !lastName || !email || !phoneNo || !experience || !expertise || !proposalDescription || !resume || !projectApplicationFor) {
           toast({ title: "Error", description: "Please fill in all developer fields.", variant: "destructive" });
           setIsSubmitting(false);
@@ -978,7 +978,7 @@ export default function Contact() {
           resume: null,
           proposalDescription: "",
           biddingBudget: "",
-          projectApplicationFor:""
+          projectApplicationFor: ""
         });
       } else {
         throw new Error(data.message || "Failed to send message");
@@ -1004,13 +1004,116 @@ export default function Contact() {
     { icon: Github, href: "https://github.com/pratyushkundu", bgColor: "bg-tech-green/20", hoverColor: "hover:bg-tech-green/40", iconColor: "text-tech-green" },
   ];
 
+  // return (
+  //   <section id="contact" className="py-20 bg-gradient-hero">
+  //     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  //       <div className="grid lg:grid-cols-2 gap-12">
+  //         {/* LEFT SIDE with contact info + socials (unchanged) */}
+  //         <div className="space-y-8">
+  //           <h2 className="text-4xl lg:text-5xl font-bold">Let&apos;s Build Something Amazing Together</h2>
+  //           <p className="text-xl text-slate-300 leading-relaxed">
+  //             Ready to transform your business? Get in touch with our expert team.
+  //           </p>
+
+  //           <div className="space-y-6">
+  //             {contactInfo.map((info, idx) => (
+  //               <div key={idx} className="flex items-center space-x-4">
+  //                 <div className={`w-12 h-12 ${info.bgColor} rounded-xl flex items-center justify-center`}>
+  //                   <info.icon className={`h-6 w-6 ${info.iconColor}`} />
+  //                 </div>
+  //                 <div>
+  //                   <div className="font-semibold text-foreground">{info.title}</div>
+  //                   <div className="text-slate-300">{info.value}</div>
+  //                 </div>
+  //               </div>
+  //             ))}
+  //           </div>
+
+  //           <div className="flex space-x-4">
+  //             {socialLinks.map((social, idx) => (
+  //               <a key={idx} href={social.href} target="_blank" className={`w-12 h-12 ${social.bgColor} rounded-xl flex items-center justify-center ${social.hoverColor}`}>
+  //                 <social.icon className={`h-6 w-6 ${social.iconColor}`} />
+  //               </a>
+  //             ))}
+  //           </div>
+  //         </div>
+
+  //         {/* RIGHT SIDE FORM */}
+  //         <Card className="bg-tech-slate/80 backdrop-blur-md border border-slate-700/50">
+  //           <CardContent className="p-8">
+  //             <div className="flex justify-center mb-6">
+  //               <ToggleGroup type="single" value={formType} onValueChange={(val) => setFormType(val as any)} className="gap-2">
+  //                 <ToggleGroupItem value="client" className="px-4 py-2 rounded-xl data-[state=on]:bg-tech-purple/80 data-[state=on]:text-white">Client</ToggleGroupItem>
+  //                 <ToggleGroupItem value="developer" className="px-4 py-2 rounded-xl data-[state=on]:bg-tech-blue/80 data-[state=on]:text-white">Developer</ToggleGroupItem>
+  //               </ToggleGroup>
+  //             </div>
+
+  //             <form onSubmit={handleSubmit} className="space-y-6">
+  //               {/* Common Fields */}
+  //               <div className="grid md:grid-cols-2 gap-6">
+  //                 <Input placeholder="First Name *" value={formType === "client" ? clientFormData.firstName : developerFormData.firstName}
+  //                   onChange={(e) => handleInputChange(formType, "firstName", e.target.value)} />
+  //                 <Input placeholder="Last Name *" value={formType === "client" ? clientFormData.lastName : developerFormData.lastName}
+  //                   onChange={(e) => handleInputChange(formType, "lastName", e.target.value)} />
+  //               </div>
+  //               <Input type="email" placeholder="Email *" value={formType === "client" ? clientFormData.email : developerFormData.email}
+  //                 onChange={(e) => handleInputChange(formType, "email", e.target.value)} />
+
+  //               {formType === "client" ? (
+  //                 <>
+  //                   <Select value={clientFormData.projectType} onValueChange={(v) => handleInputChange("client", "projectType", v)}>
+  //                     <SelectTrigger><SelectValue placeholder="Select project type" /></SelectTrigger>
+  //                     <SelectContent>
+  //                       <SelectItem value="web">Web Development</SelectItem>
+  //                       <SelectItem value="mobile">Mobile App</SelectItem>
+  //                       <SelectItem value="cloud">Cloud Solutions</SelectItem>
+  //                       <SelectItem value="ai">AI Integration</SelectItem>
+  //                     </SelectContent>
+  //                   </Select>
+  //                   <Select value={clientFormData.budget} onValueChange={(v) => handleInputChange("client", "budget", v)}>
+  //                     <SelectTrigger><SelectValue placeholder="Select budget" /></SelectTrigger>
+  //                     <SelectContent>
+  //                       <SelectItem value="less than 5k">less than $5k</SelectItem>
+  //                       <SelectItem value="5k-10k">$5K - $10K</SelectItem>
+  //                       <SelectItem value="10k-25k">$10K - $25K</SelectItem>
+  //                       <SelectItem value="25k-50k">$25K - $50K</SelectItem>
+  //                       <SelectItem value="50k+">$50K+</SelectItem>
+  //                     </SelectContent>
+  //                   </Select>
+  //                   <Textarea placeholder="Tell us about your project..." value={clientFormData.description} onChange={(e) => handleInputChange("client", "description", e.target.value)} />
+  //                 </>
+  //               ) : (
+  //                 <>
+  //                   <Input placeholder="Phone No *" value={developerFormData.phoneNo} onChange={(e) => handleInputChange("developer", "phoneNo", e.target.value)} />
+  //                   <Input placeholder="Applying For : Frontend (React),Blockchain" value={developerFormData.projectApplicationFor} onChange={(e) => handleInputChange("developer", "projectApplicationFor", e.target.value)} />
+  //                   <Input placeholder="Experience : 4 yr. *" value={developerFormData.experience} onChange={(e) => handleInputChange("developer", "experience", e.target.value)} />
+  //                   <Input placeholder="Expertise: React, Blockchain *" value={developerFormData.expertise} onChange={(e) => handleInputChange("developer", "expertise", e.target.value)} />
+  //                   <Input type="file" accept=".pdf,.doc,.docx" onChange={(e) => handleInputChange("developer", "resume", e.target.files?.[0] || null)} />
+  //                   <Textarea placeholder="Proposal Description *" value={developerFormData.proposalDescription} onChange={(e) => handleInputChange("developer", "proposalDescription", e.target.value)} />
+  //                   <Input placeholder="Bidding Budget (optional)" value={developerFormData.biddingBudget} onChange={(e) => handleInputChange("developer", "biddingBudget", e.target.value)} />
+  //                 </>
+  //               )}
+
+  //               <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-tech py-4 rounded-xl">
+  //                 {isSubmitting ? "Sending..." : "Send Message"}
+  //               </Button>
+  //             </form>
+  //           </CardContent>
+  //         </Card>
+  //       </div>
+  //     </div>
+  //   </section>
+  // );
+
   return (
     <section id="contact" className="py-20 bg-gradient-hero">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* LEFT SIDE with contact info + socials (unchanged) */}
+          {/* LEFT SIDE */}
           <div className="space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold">Let&apos;s Build Something Amazing Together</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold">
+              Let&apos;s Build Something Amazing Together
+            </h2>
             <p className="text-xl text-slate-300 leading-relaxed">
               Ready to transform your business? Get in touch with our expert team.
             </p>
@@ -1018,7 +1121,9 @@ export default function Contact() {
             <div className="space-y-6">
               {contactInfo.map((info, idx) => (
                 <div key={idx} className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 ${info.bgColor} rounded-xl flex items-center justify-center`}>
+                  <div
+                    className={`w-12 h-12 ${info.bgColor} rounded-xl flex items-center justify-center`}
+                  >
                     <info.icon className={`h-6 w-6 ${info.iconColor}`} />
                   </div>
                   <div>
@@ -1031,7 +1136,12 @@ export default function Contact() {
 
             <div className="flex space-x-4">
               {socialLinks.map((social, idx) => (
-                <a key={idx} href={social.href} target="_blank" className={`w-12 h-12 ${social.bgColor} rounded-xl flex items-center justify-center ${social.hoverColor}`}>
+                <a
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  className={`w-12 h-12 ${social.bgColor} rounded-xl flex items-center justify-center ${social.hoverColor}`}
+                >
                   <social.icon className={`h-6 w-6 ${social.iconColor}`} />
                 </a>
               ))}
@@ -1041,60 +1151,251 @@ export default function Contact() {
           {/* RIGHT SIDE FORM */}
           <Card className="bg-tech-slate/80 backdrop-blur-md border border-slate-700/50">
             <CardContent className="p-8">
-              <div className="flex justify-center mb-6">
-                <ToggleGroup type="single" value={formType} onValueChange={(val) => setFormType(val as any)} className="gap-2">
-                  <ToggleGroupItem value="client" className="px-4 py-2 rounded-xl data-[state=on]:bg-tech-purple/80 data-[state=on]:text-white">Client</ToggleGroupItem>
-                  <ToggleGroupItem value="developer" className="px-4 py-2 rounded-xl data-[state=on]:bg-tech-blue/80 data-[state=on]:text-white">Developer</ToggleGroupItem>
+              {/* Toggle Switch */}
+              <div className="flex justify-center mb-8">
+                {/* <ToggleGroup
+                type="single"
+                value={formType}
+                onValueChange={(val) => setFormType(val as any)}
+                className="gap-3"
+              >
+                <ToggleGroupItem
+                  value="client"
+                  className="px-6 py-2 rounded-xl border border-slate-600 
+                             data-[state=on]:bg-tech-purple/90 data-[state=on]:text-white 
+                             data-[state=on]:shadow-lg hover:bg-tech-purple/70 
+                             transition-all"
+                >
+                  Client
+                </ToggleGroupItem>
+                <ToggleGroupItem
+                  value="developer"
+                  className="px-6 py-2 rounded-xl border border-slate-600 
+                             data-[state=on]:bg-tech-blue/90 data-[state=on]:text-white 
+                             data-[state=on]:shadow-lg hover:bg-tech-blue/70 
+                             transition-all"
+                >
+                  Developer
+                </ToggleGroupItem>
+              </ToggleGroup> */}
+                <ToggleGroup
+                  type="single"
+                  value={formType}
+                  onValueChange={(val) => setFormType(val as any)}
+                  className="gap-3"
+                >
+                  <ToggleGroupItem
+                    value="client"
+                    className={`
+      px-6 py-2 rounded-xl border transition-all font-medium
+      ${formType === "client"
+                        ? "bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-lg scale-105"
+                        : "bg-slate-700/40 text-slate-400 hover:bg-slate-700/60 hover:text-slate-200"}
+    `}
+                  >
+                    Client
+                  </ToggleGroupItem>
+
+                  <ToggleGroupItem
+                    value="developer"
+                    className={`
+      px-6 py-2 rounded-xl border transition-all font-medium
+      ${formType === "developer"
+                        ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg scale-105"
+                        : "bg-slate-700/40 text-slate-400 hover:bg-slate-700/60 hover:text-slate-200"}
+    `}
+                  >
+                    Developer
+                  </ToggleGroupItem>
                 </ToggleGroup>
+
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Common Fields */}
                 <div className="grid md:grid-cols-2 gap-6">
-                  <Input placeholder="First Name *" value={formType === "client" ? clientFormData.firstName : developerFormData.firstName}
-                    onChange={(e) => handleInputChange(formType, "firstName", e.target.value)} />
-                  <Input placeholder="Last Name *" value={formType === "client" ? clientFormData.lastName : developerFormData.lastName}
-                    onChange={(e) => handleInputChange(formType, "lastName", e.target.value)} />
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-200">
+                      First Name <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      value={
+                        formType === "client"
+                          ? clientFormData.firstName
+                          : developerFormData.firstName
+                      }
+                      onChange={(e) => handleInputChange(formType, "firstName", e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-200">
+                      Last Name <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      value={
+                        formType === "client"
+                          ? clientFormData.lastName
+                          : developerFormData.lastName
+                      }
+                      onChange={(e) => handleInputChange(formType, "lastName", e.target.value)}
+                    />
+                  </div>
                 </div>
-                <Input type="email" placeholder="Email *" value={formType === "client" ? clientFormData.email : developerFormData.email}
-                  onChange={(e) => handleInputChange(formType, "email", e.target.value)} />
+
+                <div>
+                  <label className="block text-sm font-medium mb-1 text-slate-200">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    type="email"
+                    value={formType === "client" ? clientFormData.email : developerFormData.email}
+                    onChange={(e) => handleInputChange(formType, "email", e.target.value)}
+                  />
+                </div>
 
                 {formType === "client" ? (
                   <>
-                    <Select value={clientFormData.projectType} onValueChange={(v) => handleInputChange("client", "projectType", v)}>
-                      <SelectTrigger><SelectValue placeholder="Select project type" /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="web">Web Development</SelectItem>
-                        <SelectItem value="mobile">Mobile App</SelectItem>
-                        <SelectItem value="cloud">Cloud Solutions</SelectItem>
-                        <SelectItem value="ai">AI Integration</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <Select value={clientFormData.budget} onValueChange={(v) => handleInputChange("client", "budget", v)}>
-                      <SelectTrigger><SelectValue placeholder="Select budget" /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="less than 5k">less than $5k</SelectItem>
-                        <SelectItem value="5k-10k">$5K - $10K</SelectItem>
-                        <SelectItem value="10k-25k">$10K - $25K</SelectItem>
-                        <SelectItem value="25k-50k">$25K - $50K</SelectItem>
-                        <SelectItem value="50k+">$50K+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <Textarea placeholder="Tell us about your project..." value={clientFormData.description} onChange={(e) => handleInputChange("client", "description", e.target.value)} />
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Project Type <span className="text-red-500">*</span>
+                      </label>
+                      <Select
+                        value={clientFormData.projectType}
+                        onValueChange={(v) => handleInputChange("client", "projectType", v)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select project type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="web">Web Development</SelectItem>
+                          <SelectItem value="mobile">Mobile App</SelectItem>
+                          <SelectItem value="cloud">Cloud Solutions</SelectItem>
+                          <SelectItem value="ai">AI Integration</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Budget <span className="text-red-500">*</span>
+                      </label>
+                      <Select
+                        value={clientFormData.budget}
+                        onValueChange={(v) => handleInputChange("client", "budget", v)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select budget" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="less than 5k">Less than $5k</SelectItem>
+                          <SelectItem value="5k-10k">$5K - $10K</SelectItem>
+                          <SelectItem value="10k-25k">$10K - $25K</SelectItem>
+                          <SelectItem value="25k-50k">$25K - $50K</SelectItem>
+                          <SelectItem value="50k+">$50K+</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Project Description
+                      </label>
+                      <Textarea
+                        placeholder="Tell us about your project..."
+                        value={clientFormData.description}
+                        onChange={(e) => handleInputChange("client", "description", e.target.value)}
+                      />
+                    </div>
                   </>
                 ) : (
                   <>
-                    <Input placeholder="Phone No *" value={developerFormData.phoneNo} onChange={(e) => handleInputChange("developer", "phoneNo", e.target.value)} />
-                    <Input placeholder="Applying For : Frontend (React),Blockchain" value={developerFormData.projectApplicationFor} onChange={(e) => handleInputChange("developer", "projectApplicationFor", e.target.value)} />
-                    <Input placeholder="Experience : 4 yr. *" value={developerFormData.experience} onChange={(e) => handleInputChange("developer", "experience", e.target.value)} />
-                    <Input placeholder="Expertise: React, Blockchain *" value={developerFormData.expertise} onChange={(e) => handleInputChange("developer", "expertise", e.target.value)} />
-                    <Input type="file" accept=".pdf,.doc,.docx" onChange={(e) => handleInputChange("developer", "resume", e.target.files?.[0] || null)} />
-                    <Textarea placeholder="Proposal Description *" value={developerFormData.proposalDescription} onChange={(e) => handleInputChange("developer", "proposalDescription", e.target.value)} />
-                    <Input placeholder="Bidding Budget (optional)" value={developerFormData.biddingBudget} onChange={(e) => handleInputChange("developer", "biddingBudget", e.target.value)} />
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Phone No <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        value={developerFormData.phoneNo}
+                        onChange={(e) => handleInputChange("developer", "phoneNo", e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Applying For <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        placeholder="Frontend (React), Blockchain"
+                        value={developerFormData.projectApplicationFor}
+                        onChange={(e) =>
+                          handleInputChange("developer", "projectApplicationFor", e.target.value)
+                        }
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Experience <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        placeholder="4 yrs"
+                        value={developerFormData.experience}
+                        onChange={(e) => handleInputChange("developer", "experience", e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Expertise <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        placeholder="React, Blockchain"
+                        value={developerFormData.expertise}
+                        onChange={(e) => handleInputChange("developer", "expertise", e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Resume <span className="text-red-500">*</span>
+                      </label>
+                      <Input
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={(e) =>
+                          handleInputChange("developer", "resume", e.target.files?.[0] || null)
+                        }
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Proposal Description <span className="text-red-500">*</span>
+                      </label>
+                      <Textarea
+                        value={developerFormData.proposalDescription}
+                        onChange={(e) =>
+                          handleInputChange("developer", "proposalDescription", e.target.value)
+                        }
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-1 text-slate-200">
+                        Bidding Budget (optional)
+                      </label>
+                      <Input
+                        value={developerFormData.biddingBudget}
+                        onChange={(e) => handleInputChange("developer", "biddingBudget", e.target.value)}
+                      />
+                    </div>
                   </>
                 )}
 
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-tech py-4 rounded-xl">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-tech py-4 rounded-xl"
+                >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
@@ -1104,5 +1405,7 @@ export default function Contact() {
       </div>
     </section>
   );
+
+
 }
 
