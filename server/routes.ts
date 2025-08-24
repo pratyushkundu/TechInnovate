@@ -7,7 +7,20 @@ import { randomUUID } from "crypto";
 import { sendContactNotification, sendDeveloperNotification } from "./services/email";
 
 import { db } from "./db"
-import { upload } from "./middleware/upload";
+// import { upload } from "./middleware/upload";
+
+import multer from "multer";
+import { createClient } from "@supabase/supabase-js";
+
+// Multer for memory storage (we upload buffer directly to Supabase)
+const upload = multer({ storage: multer.memoryStorage() });
+
+// Supabase client
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_KEY!
+);
+
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
@@ -62,9 +75,114 @@ export async function registerRoutes(app: Express): Promise<Server> {
   //   }
   // });
 
+  // app.post("/api/contact/developer", upload.single("resume"), async (req, res) => {
+  //   try {
+  //     const {
+  //       firstName,
+  //       lastName,
+  //       email,
+  //       phoneNo,
+  //       experience,
+  //       expertise,
+  //       proposalDescription,
+  //       projectApplicationFor,
+  //     } = req.body;
+
+  //     if (!req.file) {
+  //       return res.status(400).json({ success: false, message: "Resume file is required" });
+  //     }
+
+  //     // Save developer in DB
+  //     const [developer] = await db
+  //       .insert(developers)
+  //       .values({
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         phoneNo,
+  //         experience,
+  //         expertise,
+  //         proposalDescription,
+  //         resume: req.file?.filename, // store file path
+  //         projectApplicationFor,
+  //       })
+  //       .returning();
+
+
+  //     // const validatedData = insertDeveloperSchema.parse(req.body);
+
+  //     // if (req.file) {
+  //     //   validatedData.resume = req.file?.filename; // save file path into DB
+  //     // }
+
+  //     // Step 3: Save to DB
+  //     // const developer = await storage.createDeveloperContact(validatedData);
+
+  //     // Step 4: Generate AI project suggestions
+  //     // const suggestions = await generateProjectSuggestions(validatedData.proposalDescription);
+
+  //     // Step 5: Send notification email
+  //     const emailSent = await sendDeveloperNotification(developer);
+
+  //     res.json({
+  //       success: true,
+  //       developer,
+  //       emailSent,
+  //       message: "Developer form submitted successfully",
+  //     });
+  //   } catch (error) {
+  //     console.error("Developer Contact form error:", error);
+  //     res.status(400).json({
+  //       success: false,
+  //       message: "Failed to submit developer contact form",
+  //     });
+  //   }
+  // });
+
+
   app.post("/api/contact/developer", upload.single("resume"), async (req, res) => {
-    try {
-      const {
+  try {
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNo,
+      experience,
+      expertise,
+      proposalDescription,
+      projectApplicationFor,
+      biddingBudget
+    } = req.body;
+
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: "Resume file is required" });
+    }
+
+     // ✅ Sanitize filename to avoid Supabase errors
+    const safeFileName = req.file.originalname.replace(/[^a-zA-Z0-9.\-_]/g, "_");
+    const fileName = `resumes/${Date.now()}_${safeFileName}`;
+
+    // Upload resume to Supabase storage
+    const { error: uploadError } = await supabase.storage
+      .from("resumes") // bucket name must exist
+      .upload(fileName, req.file.buffer, {
+        contentType: req.file.mimetype,
+      });
+
+
+    if (uploadError) throw uploadError;
+
+    // Get public URL of resume
+    const { data: publicUrlData } = supabase.storage
+      .from("resumes")
+      .getPublicUrl(fileName);
+
+    const resumeUrl = publicUrlData.publicUrl;
+
+    // Save developer record in DB with Supabase file name (or URL)
+    const [developer] = await db
+      .insert(developers)
+      .values({
         firstName,
         lastName,
         email,
@@ -72,60 +190,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
         experience,
         expertise,
         proposalDescription,
+        resume: resumeUrl, // ✅ store Supabase path instead of local filename
         projectApplicationFor,
-      } = req.body;
+        biddingBudget
+      })
+      .returning();
 
-      if (!req.file) {
-        return res.status(400).json({ success: false, message: "Resume file is required" });
-      }
+    // Send email notification (your email.ts will build resumeUrl using BASE_URL)
+    const emailSent = await sendDeveloperNotification({
+      ...developer,
+      resume: resumeUrl, // important so your email.ts can construct correct URL
+    });
 
-      // Save developer in DB
-      const [developer] = await db
-        .insert(developers)
-        .values({
-          firstName,
-          lastName,
-          email,
-          phoneNo,
-          experience,
-          expertise,
-          proposalDescription,
-          resume: req.file?.filename, // store file path
-          projectApplicationFor,
-        })
-        .returning();
-
-
-    // const validatedData = insertDeveloperSchema.parse(req.body);
-
-    // if (req.file) {
-    //   validatedData.resume = req.file?.filename; // save file path into DB
-    // }
-
-    // Step 3: Save to DB
-    // const developer = await storage.createDeveloperContact(validatedData);
-
-    // Step 4: Generate AI project suggestions
-    // const suggestions = await generateProjectSuggestions(validatedData.proposalDescription);
-
-    // Step 5: Send notification email
-    const emailSent = await sendDeveloperNotification(developer);
-
-      res.json({
-        success: true,
-        developer,
-       emailSent,
-        message: "Developer form submitted successfully",
-      });
-    } catch (error) {
-      console.error("Developer Contact form error:", error);
-      res.status(400).json({
-        success: false,
-        message: "Failed to submit developer contact form",
-      });
-    }
-  });
-
+    res.json({
+      success: true,
+      developer,
+      emailSent,
+      message: "Developer form submitted successfully",
+      resumeUrl, // send public URL back to frontend
+    });
+  } catch (error) {
+    console.error("Developer Contact form error:", error);
+    res.status(400).json({
+      success: false,
+      message: "Failed to submit developer contact form",
+    });
+  }
+});
 
 
   // Get all contacts (for admin purposes)

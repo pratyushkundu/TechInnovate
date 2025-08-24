@@ -62,9 +62,9 @@ export async function sendContactNotification(contact: Contact): Promise<boolean
 
 export async function sendDeveloperNotification(developer: Developer): Promise<boolean> {
 // process.env.BASE_URL || 
-    const baseUrl =  process.env.BASE_URL ;
-    const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
-
+    // const baseUrl =  process.env.BASE_URL ;
+    // const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
+const resumeUrl = developer.resume;
     console.log(resumeUrl,'rsumen url atgs')
 
     if (!process.env.SENDGRID_API_KEY) {
