@@ -26,3 +26,13 @@
   `}
   data-testid="chatbot-interface"
 >
+
+
+
+
+      <Card 
+          className={`absolute bottom-20 right-0 w-96 h-[500px] bg-card/95 backdrop-blur-md border border-border shadow-2xl transform transition-all duration-300 ${
+            isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+          }`}
+          data-testid="chatbot-interface"
+        >

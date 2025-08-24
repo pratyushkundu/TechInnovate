@@ -64,7 +64,7 @@ export default function Chatbot() {
       });
 
       const data = await response.json();
-      
+
       if (data.sessionId) {
         setSessionId(data.sessionId);
       }
@@ -113,8 +113,9 @@ export default function Chatbot() {
 
       {/* Chatbot Interface */}
       {isOpen && (
-      <Card 
-  className={`
+
+        <Card
+          className={`
     fixed bottom-28 right-4         /* move card up from toggle button */
     w-[90vw] max-w-md       /* mobile: 90% of viewport width, max 28rem */
     h-[60vh] max-h-[500px]  /* mobile: 60% of viewport height, max 500px */
@@ -124,10 +125,9 @@ export default function Chatbot() {
     ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
     flex flex-col
   `}
-  data-testid="chatbot-interface"
->
-
-{/* Header */}
+          data-testid="chatbot-interface"
+        >
+          {/* Header */}
           <div className="p-4 border-b border-border flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-tech rounded-full flex items-center justify-center">
@@ -162,12 +162,11 @@ export default function Chatbot() {
                     <User className="text-muted-foreground text-sm" />
                   </div>
                 )}
-                <div 
-                  className={`p-3 rounded-xl max-w-xs ${
-                    message.role === 'assistant' 
-                      ? 'bg-muted' 
+                <div
+                  className={`p-3 rounded-xl max-w-xs ${message.role === 'assistant'
+                      ? 'bg-muted'
                       : 'bg-tech-blue text-white ml-auto'
-                  }`}
+                    }`}
                   data-testid={`message-${message.role}`}
                 >
                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
