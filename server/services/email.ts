@@ -65,6 +65,8 @@ export async function sendDeveloperNotification(developer: Developer): Promise<b
     const baseUrl =  process.env.BASE_URL ;
     const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
 
+    console.log(resumeUrl,'rsumen url atgs')
+
     if (!process.env.SENDGRID_API_KEY) {
         console.warn("SENDGRID_API_KEY not configured, skipping email notification");
         return false;
