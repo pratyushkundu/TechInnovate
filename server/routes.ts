@@ -13,6 +13,13 @@ import multer from "multer";
 import { createClient } from "@supabase/supabase-js";
 import path from "path";
 
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // Multer for memory storage (we upload buffer directly to Supabase)
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -315,11 +322,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-// Route for sitemap.xml
-app.get("/sitemap.xml", (req, res) => {
-  res.type("application/xml"); // ✅ sets Content-Type correctly
-  res.sendFile(path.join(__dirname, "client", "public", "sitemap.xml"));
-});
+
+  app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml"); // ✅ ensures Content-Type
+    res.sendFile(path.join(__dirname, "../client/public/sitemap.xml"));
+  });
+
 
   const httpServer = createServer(app);
   return httpServer;
