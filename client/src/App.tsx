@@ -38,14 +38,21 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { HelmetProvider } from "react-helmet-async";
-
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
+import Terms from "./pages/terms";
+import Privacy from "./pages/privacy";
+import Blog from "./pages/blog";
+import Documentation from "./pages/documentation";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/documentation" component={Documentation} />
       <Route component={NotFound} />
     </Switch>
   );

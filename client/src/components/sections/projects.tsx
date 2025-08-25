@@ -139,7 +139,7 @@ export default function Projects() {
   const featuredProjects = [
     {
       title: "E-Commerce Platform Transformation",
-      description: "Complete digital transformation of a retail platform, increasing sales by 300% and improving user experience.",
+      description: "Complete digital transformation of a retail platform, increasing sales by and improving user experience.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       tags: ["React", "Node.js", "AWS", "AI/ML"],
       borderColor: "hover:border-tech-purple/50",
@@ -147,7 +147,7 @@ export default function Projects() {
     },
     {
       title: "AI-Powered Analytics Suite",
-      description: "Custom AI solution for real-time business intelligence, reducing decision-making time by 80%.",
+      description: "Custom AI solution for real-time business intelligence, reducing decision-making time .",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       tags: ["Python", "TensorFlow", "Docker", "GraphQL"],
       borderColor: "hover:border-tech-cyan/50",
@@ -164,7 +164,7 @@ export default function Projects() {
 
     {
       title: "Enterprise Blockchain Solution",
-      description: "Secure supply chain tracking system using blockchain technology, reducing fraud by 95% and increasing transparency.",
+      description: "Secure supply chain tracking system using blockchain technology, reducing fraud and increasing transparency.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       tags: ["Blockchain", "Solidity", "Web3", "TypeScript"],
       borderColor: "hover:border-tech-green/50",
@@ -172,45 +172,82 @@ export default function Projects() {
     }
   ];
 
-  const smallProjects = [
-    {
-      title: "FinTech Mobile App",
-      description: "Secure banking solution with biometric authentication",
-      tags: ["React Native", "Blockchain"]
-    },
-    {
-      title: "Decentralized Trading Platform",
-      description: "A blockchain-powered trading platform with a sleek, interactive UI for secure crypto and token trading, real-time price charts, and wallet integration.",
-      tags: ["Blockchain", "Ethereum", "Web3.js", "React", "TailwindCSS"],
+  // const smallProjects = [
+  //   {
+  //     title: "FinTech Mobile App",
+  //     description: "Secure banking solution with biometric authentication",
+  //     tags: ["React Native", "Blockchain"]
+  //   },
+  //   {
+  //     title: "Decentralized Trading Platform",
+  //     description: "A blockchain-powered trading platform with a sleek, interactive UI for secure crypto and token trading, real-time price charts, and wallet integration.",
+  //     tags: ["Blockchain", "Ethereum", "Web3.js", "React", "TailwindCSS"],
 
-    },
+  //   },
 
-    {
-      title: "Healthcare Management",
-      description: "HIPAA-compliant patient management system",
-      tags: ["Vue.js", "PostgreSQL"]
-    },
-    {
-      title: "IoT Dashboard",
-      description: "Real-time monitoring for smart city infrastructure",
-      tags: ["Angular", "MongoDB"]
-    },
-    {
-      title: "Education Platform",
-      description: "Interactive learning management system with AI tutoring",
-      tags: ["React", "Python"]
-    },
-    {
-      title: "Logistics Optimizer",
-      description: "Route optimization system reducing delivery costs by 40%",
-      tags: ["Machine Learning", "APIs"]
-    },
-    {
-      title: "Social Commerce App",
-      description: "Community-driven marketplace with integrated social features",
-      tags: ["Flutter", "Firebase"]
-    }
-  ];
+  //   {
+  //     title: "Healthcare Management",
+  //     description: "HIPAA-compliant patient management system",
+  //     tags: ["Vue.js", "PostgreSQL"]
+  //   },
+  //   {
+  //     title: "IoT Dashboard",
+  //     description: "Real-time monitoring for smart city infrastructure",
+  //     tags: ["Angular", "MongoDB"]
+  //   },
+  //   {
+  //     title: "Education Platform",
+  //     description: "Interactive learning management system with AI tutoring",
+  //     tags: ["React", "Python"]
+  //   },
+  //   {
+  //     title: "Logistics Optimizer",
+  //     description: "Route optimization system reducing delivery costs by 40%",
+  //     tags: ["Machine Learning", "APIs"]
+  //   },
+  //   {
+  //     title: "Social Commerce App",
+  //     description: "Community-driven marketplace with integrated social features",
+  //     tags: ["Flutter", "Firebase"]
+  //   }
+  // ];
+const smallProjects = [
+  {
+    title: "FinTech Mobile App",
+    description: "Secure banking solution with biometric authentication",
+    tags: ["React Native", "Blockchain"]
+  },
+  {
+    title: "Decentralized Trading Platform",
+    description: "A blockchain-powered trading platform with a sleek, interactive UI for secure crypto and token trading, real-time price charts, and wallet integration.",
+    tags: ["Blockchain", "Ethereum", "Web3.js", "React", "TailwindCSS"]
+  },
+  {
+    title: "Healthcare Management",
+    description: "HIPAA-compliant patient management system",
+    tags: ["Vue.js", "PostgreSQL"]
+  },
+  {
+    title: "Smart Contract Management",
+    description: "Automated smart contracts for secure transactions and decentralized applications",
+    tags: ["Solidity", "Ethereum", "Web3.js", "Node.js"]
+  },
+  {
+    title: "CRM Automation Platform",
+    description: "Customer relationship management with AI-driven insights and workflow automation",
+    tags: ["Node.js", "React", "AI", "APIs"]
+  },
+  {
+    title: "AI-Powered Education Platform",
+    description: "Interactive learning management system with personalized AI tutoring",
+    tags: ["React", "Python", "AI"]
+  },
+  {
+    title: "Social Commerce App",
+    description: "Community-driven marketplace with integrated social features",
+    tags: ["Flutter", "Firebase"]
+  }
+];
 
   return (
     <section id="projects" className="py-20 bg-tech-slate/50 dark:bg-tech-slate/50">
