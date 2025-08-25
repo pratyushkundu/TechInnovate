@@ -11,6 +11,7 @@ import { db } from "./db"
 
 import multer from "multer";
 import { createClient } from "@supabase/supabase-js";
+import path from "path";
 
 // Multer for memory storage (we upload buffer directly to Supabase)
 const upload = multer({ storage: multer.memoryStorage() });
@@ -141,48 +142,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
 
   app.post("/api/contact/developer", upload.single("resume"), async (req, res) => {
-  try {
-    const {
-      firstName,
-      lastName,
-      email,
-      phoneNo,
-      experience,
-      expertise,
-      proposalDescription,
-      projectApplicationFor,
-      biddingBudget
-    } = req.body;
-
-    if (!req.file) {
-      return res.status(400).json({ success: false, message: "Resume file is required" });
-    }
-
-     // ✅ Sanitize filename to avoid Supabase errors
-    const safeFileName = req.file.originalname.replace(/[^a-zA-Z0-9.\-_]/g, "_");
-    const fileName = `resumes/${Date.now()}_${safeFileName}`;
-
-    // Upload resume to Supabase storage
-    const { error: uploadError } = await supabase.storage
-      .from("resumes") // bucket name must exist
-      .upload(fileName, req.file.buffer, {
-        contentType: req.file.mimetype,
-      });
-
-
-    if (uploadError) throw uploadError;
-
-    // Get public URL of resume
-    const { data: publicUrlData } = supabase.storage
-      .from("resumes")
-      .getPublicUrl(fileName);
-
-    const resumeUrl = publicUrlData.publicUrl;
-
-    // Save developer record in DB with Supabase file name (or URL)
-    const [developer] = await db
-      .insert(developers)
-      .values({
+    try {
+      const {
         firstName,
         lastName,
         email,
@@ -190,33 +151,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
         experience,
         expertise,
         proposalDescription,
-        resume: resumeUrl, // ✅ store Supabase path instead of local filename
         projectApplicationFor,
         biddingBudget
-      })
-      .returning();
+      } = req.body;
 
-    // Send email notification (your email.ts will build resumeUrl using BASE_URL)
-    const emailSent = await sendDeveloperNotification({
-      ...developer,
-      resume: resumeUrl, // important so your email.ts can construct correct URL
-    });
+      if (!req.file) {
+        return res.status(400).json({ success: false, message: "Resume file is required" });
+      }
 
-    res.json({
-      success: true,
-      developer,
-      emailSent,
-      message: "Developer form submitted successfully",
-      resumeUrl, // send public URL back to frontend
-    });
-  } catch (error) {
-    console.error("Developer Contact form error:", error);
-    res.status(400).json({
-      success: false,
-      message: "Failed to submit developer contact form",
-    });
-  }
-});
+      // ✅ Sanitize filename to avoid Supabase errors
+      const safeFileName = req.file.originalname.replace(/[^a-zA-Z0-9.\-_]/g, "_");
+      const fileName = `resumes/${Date.now()}_${safeFileName}`;
+
+      // Upload resume to Supabase storage
+      const { error: uploadError } = await supabase.storage
+        .from("resumes") // bucket name must exist
+        .upload(fileName, req.file.buffer, {
+          contentType: req.file.mimetype,
+        });
+
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL of resume
+      const { data: publicUrlData } = supabase.storage
+        .from("resumes")
+        .getPublicUrl(fileName);
+
+      const resumeUrl = publicUrlData.publicUrl;
+
+      // Save developer record in DB with Supabase file name (or URL)
+      const [developer] = await db
+        .insert(developers)
+        .values({
+          firstName,
+          lastName,
+          email,
+          phoneNo,
+          experience,
+          expertise,
+          proposalDescription,
+          resume: resumeUrl, // ✅ store Supabase path instead of local filename
+          projectApplicationFor,
+          biddingBudget
+        })
+        .returning();
+
+      // Send email notification (your email.ts will build resumeUrl using BASE_URL)
+      const emailSent = await sendDeveloperNotification({
+        ...developer,
+        resume: resumeUrl, // important so your email.ts can construct correct URL
+      });
+
+      res.json({
+        success: true,
+        developer,
+        emailSent,
+        message: "Developer form submitted successfully",
+        resumeUrl, // send public URL back to frontend
+      });
+    } catch (error) {
+      console.error("Developer Contact form error:", error);
+      res.status(400).json({
+        success: false,
+        message: "Failed to submit developer contact form",
+      });
+    }
+  });
 
 
   // Get all contacts (for admin purposes)
@@ -313,6 +314,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ message: "Failed to fetch chat session" });
     }
   });
+
+  app.get("/sitemap.xml", (req, res) => {
+    res.header("Content-Type", "application/xml");
+    res.sendFile(path.join(__dirname, "public", "sitemap.xml"));
+  });
+
 
   const httpServer = createServer(app);
   return httpServer;
