@@ -315,11 +315,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/sitemap.xml", (req, res) => {
-    res.header("Content-Type", "application/xml");
-    res.sendFile(path.join(__dirname, "public", "sitemap.xml"));
-  });
-
+// Route for sitemap.xml
+app.get("/sitemap.xml", (req, res) => {
+  res.type("application/xml"); // ✅ sets Content-Type correctly
+  res.sendFile(path.join(__dirname, "client", "public", "sitemap.xml"));
+});
 
   const httpServer = createServer(app);
   return httpServer;
