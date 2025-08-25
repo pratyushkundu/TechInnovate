@@ -61,7 +61,7 @@ export default function Home() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.hukitola.com" />
-        <meta property="og:image" content="/logo.jpg" />
+        <meta property="og:image" content="/hukitolalogo.jpg" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -70,7 +70,7 @@ export default function Home() {
           name="twitter:description"
           content="We offer Web Development, Blockchain, AI Integration, SEO, Mobile Apps, E-Commerce & more. Contact us for consultation."
         />
-        <meta name="twitter:image" content="/logo.jpg" />
+        <meta name="twitter:image" content="/hukitolalogo.jpg" />
 
         {/* JSON-LD */}
         <script type="application/ld+json">
@@ -79,11 +79,18 @@ export default function Home() {
             "@type": "Organization",
             "name": "Hukitola Solutions",
             "url": "https://www.hukitola.com",
-            "logo": "https://www.hukitola.com/logo.jpg",
+            "logo": "https://www.hukitola.com/hukitolalogo.jpg",
             "sameAs": [
-              "https://www.linkedin.com/company/hukitola-solutions",
-              "https://twitter.com/hukitola"
-            ]
+              "https://www.linkedin.com/company/hukitola09",
+        
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9078064335",
+              "contactType": "Customer Support",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Hindi"]
+            },
           })}
         </script>
       </Helmet>
