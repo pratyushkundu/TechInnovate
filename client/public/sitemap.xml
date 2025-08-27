@@ -3,35 +3,35 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://www.hukitola.com/</loc>
+    <loc>https://hukitola.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Terms & Conditions -->
   <url>
-    <loc>https://www.hukitola.com/terms</loc>
+    <loc>https://hukitola.com/terms</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://www.hukitola.com/privacy</loc>
+    <loc>https://hukitola.com/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog -->
   <url>
-    <loc>https://www.hukitola.com/blog</loc>
+    <loc>https://hukitola.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Documentation -->
   <url>
-    <loc>https://www.hukitola.com/documentation</loc>
+    <loc>https://hukitola.com/documentation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
