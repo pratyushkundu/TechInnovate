@@ -902,7 +902,7 @@ export default function Contact() {
     budget: "",
     description: "",
     appointmentDate: "",
-  appointmentTime: "",
+    appointmentTime: "",
   });
 
   const [developerFormData, setDeveloperFormData] = useState({
@@ -1277,28 +1277,28 @@ export default function Contact() {
                       </Select>
                     </div>
 
- <div className="grid md:grid-cols-2 gap-6">
-      <div>
-        <label className="block text-sm font-medium mb-1 text-slate-200">
-          Appointment Date <span className="text-red-500">*</span>
-        </label>
-        <Input
-          type="date"
-          value={clientFormData.appointmentDate}
-          onChange={(e) => handleInputChange("client", "appointmentDate", e.target.value)}
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium mb-1 text-slate-200">
-          Appointment Time <span className="text-red-500">*</span>
-        </label>
-        <Input
-          type="time"
-          value={clientFormData.appointmentTime}
-          onChange={(e) => handleInputChange("client", "appointmentTime", e.target.value)}
-        />
-      </div>
-    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium mb-1 text-slate-200">
+                          Appointment Date <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="date"
+                          value={clientFormData.appointmentDate}
+                          onChange={(e) => handleInputChange("client", "appointmentDate", e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-1 text-slate-200">
+                          Appointment Time <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="time"
+                          value={clientFormData.appointmentTime}
+                          onChange={(e) => handleInputChange("client", "appointmentTime", e.target.value)}
+                        />
+                      </div>
+                    </div>
 
 
                     <div>
@@ -1332,7 +1332,7 @@ export default function Contact() {
                         onChange={(e) => handleInputChange("client", "description", e.target.value)}
                       />
                     </div>
-                    
+
                   </>
                 ) : (
                   <>
