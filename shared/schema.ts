@@ -82,7 +82,10 @@ export const contacts = pgTable("contacts", {
   projectType: text("project_type").notNull(),
   budget: text("budget").notNull(),
   description: text("description").notNull(),
+    appointmentDate: text("appointment_date").notNull(), // ISO date string
+  appointmentTime: text("appointment_time").notNull(), // e.g. "14:30"
   createdAt: timestamp("created_at").defaultNow(),
+
 });
 
 export const developers = pgTable("developers", {

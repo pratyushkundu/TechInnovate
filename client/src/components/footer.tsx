@@ -121,7 +121,7 @@ export default function Footer() {
         { name: "Web Development", path: "#" },
         { name: "Mobile Apps", path: "#" },
         { name: "Wordpress & Shopify", path: "#" },
-        { name: "AI Integration", path: "#" },
+        { name: "AI Integration & Automation", path: "#" },
         { name: "Blockchain & Web3", path: "#" },
       ]
     },

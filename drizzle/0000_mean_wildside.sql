@@ -19,6 +19,8 @@ CREATE TABLE "contacts" (
 	"project_type" text NOT NULL,
 	"budget" text NOT NULL,
 	"description" text NOT NULL,
+	"appointment_date" text NOT NULL,
+	"appointment_time" text NOT NULL,
 	"created_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint

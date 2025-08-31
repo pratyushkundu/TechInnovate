@@ -3,21 +3,21 @@ import type { Contact, Developer } from '@shared/schema';
 import 'dotenv/config';
 
 if (process.env.SENDGRID_API_KEY) {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 }
 
 export async function sendContactNotification(contact: Contact): Promise<boolean> {
-    if (!process.env.SENDGRID_API_KEY) {
-        console.warn('SENDGRID_API_KEY not configured, skipping email notification');
-        return false;
-    }
+  if (!process.env.SENDGRID_API_KEY) {
+    console.warn('SENDGRID_API_KEY not configured, skipping email notification');
+    return false;
+  }
 
-    try {
-        const msg = {
-            to: 'hukitola.dev@gmail.com', // Replace with your admin email
-            from: 'em1381@hukitola.com', // Replace with your verified sender email
-            subject: `New Contact Form Submission - ${contact.projectType}`,
-            html: `
+  try {
+    const msg = {
+      to: 'hukitola.dev@gmail.com', // Replace with your admin email
+      from: 'em1381@hukitola.com', // Replace with your verified sender email
+      subject: `New Contact Form Submission - ${contact.projectType}`,
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px;">
             New Contact Form Submission
@@ -49,35 +49,77 @@ export async function sendContactNotification(contact: Contact): Promise<boolean
           </div>
         </div>
       `,
-        };
+    };
+    await sgMail.send(msg);
 
-        await sgMail.send(msg);
-        console.log('Contact notification email sent successfully via SendGrid');
-        return true;
-    } catch (error) {
-        console.error('SendGrid email service error:', error);
-        return false;
-    }
+    // --- Confirmation Email to User ---
+    // --- Confirmation Email to User ---
+    const clientMsg = {
+      to: contact.email,
+      from: 'em1381@hukitola.com',
+      subject: "Your appointment request has been received!",
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px;">
+            Thank you, ${contact.firstName}!
+          </h2>
+          <p>We’ve received your project request and our team will get back to you shortly.</p>
+          
+          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0066cc; margin-top: 0;">Your Appointment</h3>
+            <p><strong>Date:</strong> ${contact.appointmentDate}</p>
+            <p><strong>Time:</strong> ${contact.appointmentTime}</p>
+          </div>
+
+          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0066cc; margin-top: 0;">Project Details</h3>
+            <p><strong>Project Type:</strong> ${contact.projectType}</p>
+            <p><strong>Budget:</strong> ${contact.budget}</p>
+            <p><strong>Description:</strong> ${contact.description}</p>
+          </div>
+
+           <div style="text-align: center; margin-top: 30px; padding: 20px; background-color: #e6f3ff; border-radius: 8px;">
+            <p style="margin: 0; color: #0066cc;">
+              <strong>Hukitola Solutions</strong><br>
+              Professional IT Services & Technology Consulting
+            </p>
+          </div>
+          <p style="margin-top: 20px; font-style: italic; color: #555;">
+            Soon we will send you an email invite link so you can add this meeting to your calendar.
+          </p>
+        </div>
+      `,
+    };
+
+    await sgMail.send(clientMsg);
+
+
+    console.log('Contact notification email sent successfully via SendGrid');
+    return true;
+  } catch (error) {
+    console.error('SendGrid email service error:', error);
+    return false;
+  }
 }
 
 export async function sendDeveloperNotification(developer: Developer): Promise<boolean> {
-// process.env.BASE_URL || 
-    // const baseUrl =  process.env.BASE_URL ;
-    // const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
-const resumeUrl = developer.resume;
-    console.log(resumeUrl,'rsumen url atgs')
+  // process.env.BASE_URL || 
+  // const baseUrl =  process.env.BASE_URL ;
+  // const resumeUrl = `${baseUrl}/uploads/${developer.resume}`;
+  const resumeUrl = developer.resume;
+  console.log(resumeUrl, 'rsumen url atgs')
 
-    if (!process.env.SENDGRID_API_KEY) {
-        console.warn("SENDGRID_API_KEY not configured, skipping email notification");
-        return false;
-    }
+  if (!process.env.SENDGRID_API_KEY) {
+    console.warn("SENDGRID_API_KEY not configured, skipping email notification");
+    return false;
+  }
 
-    try {
-        const msg = {
-            to: "hukitola.dev@gmail.com", // Replace with your admin email
-            from: "em1381@hukitola.com",  // Replace with your verified sender email
-            subject: `New Developer Form Submission - ${developer.projectApplicationFor}`,
-            html: `
+  try {
+    const msg = {
+      to: "hukitola.dev@gmail.com", // Replace with your admin email
+      from: "em1381@hukitola.com",  // Replace with your verified sender email
+      subject: `New Developer Form Submission - ${developer.projectApplicationFor}`,
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px;">
             New Developer Application
@@ -114,13 +156,13 @@ const resumeUrl = developer.resume;
           </div>
         </div>
       `,
-        };
+    };
 
-        await sgMail.send(msg);
-        console.log("Developer notification email sent successfully via SendGrid");
-        return true;
-    } catch (error) {
-        console.error("SendGrid email service error:", error);
-        return false;
-    }
+    await sgMail.send(msg);
+    console.log("Developer notification email sent successfully via SendGrid");
+    return true;
+  } catch (error) {
+    console.error("SendGrid email service error:", error);
+    return false;
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "id": "57f8cc09-8a4d-49b3-9b5e-68385a822cb0",
+  "id": "3987b8d6-65f8-4522-a9a2-59a3c4f6330c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -94,6 +94,18 @@
         },
         "description": {
           "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "appointment_date": {
+          "name": "appointment_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "appointment_time": {
+          "name": "appointment_time",
           "type": "text",
           "primaryKey": false,
           "notNull": true
