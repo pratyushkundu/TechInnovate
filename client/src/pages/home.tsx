@@ -40,6 +40,7 @@ import Contact from "@/components/sections/contact";
 import Footer from "@/components/footer";
 import Chatbot from "@/components/chatbot";
 import { Helmet } from "react-helmet-async";
+import VoiceAgent from "@/components/voiceagent";
 
 export default function Home() {
   return (
@@ -105,6 +106,7 @@ export default function Home() {
         <Pricing />
         <Contact />
       </main>
+     
       <Footer />
       <Chatbot />
     </div>

@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import VoiceAgent from "./voiceagent";
 
 interface ChatMessage {
   id: string;
@@ -36,7 +37,7 @@ export default function Chatbot() {
       const welcomeMessage: ChatMessage = {
         id: 'welcome',
         role: 'assistant',
-        content: "Hello! 👋 I'm your AI assistant from Hukitola Solutions. How can I help you today? I can answer questions about our services, pricing, or help you get started with your project.",
+        content: "Hello! 👋 I'm your assistant Neha from Hukitola Solutions. How can I help you today? I can answer questions about our services, pricing, or help you get started with your project.",
         timestamp: new Date().toISOString(),
       };
       setMessages([welcomeMessage]);
@@ -96,8 +97,16 @@ export default function Chatbot() {
     }
   };
 
-  return (
-    <div className="fixed bottom-6 right-6 z-50" data-testid="chatbot">
+  return (<>
+
+ {/* Voice Agent */}
+    <div className="fixed bottom-6 right-6 z-40">
+      <VoiceAgent />
+    </div>
+
+    {/* Chatbot */}
+    
+     <div className="fixed bottom-28 right-6 z-50" data-testid="chatbot">
       {/* Chatbot Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
@@ -215,5 +224,7 @@ export default function Chatbot() {
         </Card>
       )}
     </div>
+  </>
+  
   );
 }
