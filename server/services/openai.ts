@@ -381,7 +381,7 @@ export async function generateProjectSuggestions(projectDescription: string): Pr
           role: 'system',
           content: `You are a technical consultant for Hukitola Solutions. Based on a project description, provide:
           1. 3-5 specific technical suggestions or features
-          2. An estimated budget range (Starter: $2,999-$9,999, Professional: $10,000-$49,999, Enterprise: $50,000+)
+          2. An estimated budget range (Starter: $2,999-$3,999, Professional: $5,000-$11,999, Enterprise: $20,000+)
           3. An estimated timeline in weeks
           
           Respond in JSON format with keys: suggestions (array of strings), estimatedBudget (string), timeline (string)`

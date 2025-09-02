@@ -1315,9 +1315,9 @@ export default function Contact() {
                         <SelectContent>
                           <SelectItem value="less than 5k">Less than $5k</SelectItem>
                           <SelectItem value="5k-10k">$5K - $10K</SelectItem>
-                          <SelectItem value="10k-25k">$10K - $25K</SelectItem>
-                          <SelectItem value="25k-50k">$25K - $50K</SelectItem>
-                          <SelectItem value="50k+">$50K+</SelectItem>
+                          <SelectItem value="10k-15k">$10K - $15K</SelectItem>
+                          <SelectItem value="15k-20k">$15K - $20K</SelectItem>
+                          <SelectItem value="20k+">$20K+</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

@@ -122,14 +122,14 @@ const VoiceAgent = () => {
   }, []);
 
   return (
-    <div
-      className="
-        fixed bottom-6 right-6 z-50
-        w-[90vw] h-[60vh]     /* mobile: 90% width, 60% height */
-        max-w-sm              /* mobile max ~24rem */
-        md:w-[400px] md:h-[500px]  /* desktop fixed size */
-      "
-    >
+    // <div
+    //   className="
+    //     fixed bottom-6 right-6 z-50
+    //     w-[90vw] h-[60vh]     /* mobile: 90% width, 60% height */
+    //     max-w-sm              /* mobile max ~24rem */
+    //     md:w-[400px] md:h-[500px]  /* desktop fixed size */
+    //   "
+    // >
 
       <vapi-widget
         public-key={import.meta.env.VITE_VAPI_PUBLIC_KEY}
@@ -162,7 +162,7 @@ const VoiceAgent = () => {
       ></vapi-widget>
 
       
-    </div>
+    // </div>
   );
 };
 

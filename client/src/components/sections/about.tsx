@@ -120,9 +120,9 @@ export default function About() {
         {/* Team Section */}
         <div className="mt-24">
           <div className="text-center mb-16">
-            <h3 className="text-3xl lg:text-4xl font-bold mb-6" data-testid="team-title">Meet Our Expert Team</h3>
+            <h3 className="text-3xl lg:text-4xl font-bold mb-6" data-testid="team-title">Meet Our Team</h3>
             <p className="text-xl text-slate-300 dark:text-slate-300 max-w-3xl mx-auto" data-testid="team-description">
-              innovators driving technological excellence across every project.
+              Innovators driving technological excellence across every project.
             </p>
           </div>
 

@@ -106,8 +106,8 @@ export default function Home() {
         <Pricing />
         <Contact />
       </main>
-      <Footer />
       <Chatbot />
+      <Footer />
     </div>
   );
 }

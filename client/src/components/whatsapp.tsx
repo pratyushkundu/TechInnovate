@@ -18,7 +18,7 @@ export default function ChatWithUs() {
         onClick={handleWhatsAppClick}
         className="p-3 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition"
       >
-        <FaWhatsapp size={28} />
+        <FaWhatsapp size={24} />
       </button>
     </div>
   );
