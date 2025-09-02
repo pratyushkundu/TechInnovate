@@ -40,11 +40,11 @@ export default function Hero() {
             </div>
             <div className="flex items-center space-x-8 pt-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-tech-green" data-testid="stat-projects">30+</div>
+                <div className="text-3xl font-bold text-tech-green" data-testid="stat-projects">50+</div>
                 <div className="text-sm text-slate-400">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-tech-cyan" data-testid="stat-clients">15+</div>
+                <div className="text-3xl font-bold text-tech-cyan" data-testid="stat-clients">25+</div>
                 <div className="text-sm text-slate-400">Clients</div>
               </div>
               <div className="text-center">
