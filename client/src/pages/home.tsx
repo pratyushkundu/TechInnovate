@@ -106,7 +106,6 @@ export default function Home() {
         <Pricing />
         <Contact />
       </main>
-     
       <Footer />
       <Chatbot />
     </div>

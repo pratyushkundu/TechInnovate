@@ -228,13 +228,12 @@ export default function Navigation() {
               </button>
             ))}
 
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
-              {/* Theme icon */}
-            </Button>
+            </Button> */}
 
             <Button
               className="bg-gradient-tech hover:scale-105 transition-transform duration-300 font-medium"
@@ -246,13 +245,12 @@ export default function Navigation() {
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
-              {/* Theme icon */}
-            </Button>
+            </Button> */}
             <Button
               variant="ghost"
               size="icon"
