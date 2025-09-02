@@ -130,6 +130,7 @@ const VoiceAgent = () => {
         md:w-[400px] md:h-[500px]  /* desktop fixed size */
       "
     >
+
       <vapi-widget
         public-key={import.meta.env.VITE_VAPI_PUBLIC_KEY}
         assistant-id={import.meta.env.VITE_VAPI_ASSISTANT_ID}
@@ -159,6 +160,8 @@ const VoiceAgent = () => {
           maxWidth: "100%", // 🔑 prevent overflow on small screens
         }}
       ></vapi-widget>
+
+      
     </div>
   );
 };

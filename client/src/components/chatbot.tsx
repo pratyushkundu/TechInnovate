@@ -6,6 +6,7 @@ import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import VoiceAgent from "./voiceagent";
+import ChatWithUs from "./whatsapp";
 
 interface ChatMessage {
   id: string;
@@ -99,14 +100,19 @@ export default function Chatbot() {
 
   return (<>
 
- {/* Voice Agent */}
+    {/* Voice Agent */}
+
     <div className="fixed bottom-6 right-6 z-40">
       <VoiceAgent />
     </div>
 
+    {/* Chat With Us - stacked just above VoiceAgent */}
+
+   
+
     {/* Chatbot */}
-    
-     <div className="fixed bottom-28 right-6 z-50" data-testid="chatbot">
+
+    <div className="fixed bottom-44 right-6 z-50" data-testid="chatbot">
       {/* Chatbot Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
@@ -224,7 +230,11 @@ export default function Chatbot() {
         </Card>
       )}
     </div>
+
+     <div className="fixed bottom-24 right-6 z-40">
+      <ChatWithUs />
+    </div>
   </>
-  
+
   );
 }
